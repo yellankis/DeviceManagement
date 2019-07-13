@@ -40,4 +40,20 @@ public class DeviceManagementController {
 
     }
 
+    @PostMapping("/deregisterdevice")
+	public Device deRegisterDetails(String deviceId) {
+		return deviceManagementService.deRegister(deviceId);
+	}
+
+	@PostMapping("/deviceexists")
+	public Response registerDetails(@RequestParam String deviceId) throws JsonProcessingException {
+		Device device = deviceManagementService.getDeviceById(deviceId);
+		Response r = new Response();
+		if (device != null) {
+			r.setData(device);
+		} else {
+			r.setError("Device not Found.");
+		}
+		return r;
+	}
 }
