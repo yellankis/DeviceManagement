@@ -1,4 +1,6 @@
-package com.device.management.model;
+package com.problem.shaheed.dao;
+
+import java.util.Date;
 
 public class Device {
 
@@ -6,11 +8,11 @@ public class Device {
 
     private final String deviceName;
 
-    private final Date lastRegisteredDate;
+    private  Date lastRegisteredDate;
 
-    private final Date lastDeRegisteredDate;
+    private  Date lastDeRegisteredDate;
 
-    private final boolean status;
+    private  boolean status;
 
     public Date getLastRegisteredDate() {
         return lastRegisteredDate;
