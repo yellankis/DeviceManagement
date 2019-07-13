@@ -12,6 +12,9 @@ import com.problem.shaheed.dao.Device;
 
 @Service
 public class DeviceManagementService {
+  @Autowired
+	private DeviceRepository deviceRepository;
+  
   private final static List<Device> devices = new ArrayList<>();
 
   static {
@@ -37,5 +40,27 @@ public class DeviceManagementService {
   public List<Device> getAllDevices(){
     return devices;
   }
+  public Device register(Device device) {
+		return deviceRepository.save(device);
+	}
+	
+	public Device deRegister(String deviceId){
+		Optional<Device> device = deviceRepository.findById(deviceId);
+		if(device.isPresent()){
+			Device d1 = device.get();
+			d1.setStatus(false);
+			return deviceRepository.save(d1);
+		}
+		return null;
+	}
+
+	public Device getDeviceById(String deviceId) {
+		Optional<Device> device = deviceRepository.findById(deviceId);
+		if(device.isPresent()){
+			return device.get();
+		}else{
+			return null;
+		}
+	}
 
 }
