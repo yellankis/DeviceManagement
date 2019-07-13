@@ -1,11 +1,17 @@
-package com.device.management.service;
+package com.problem.shaheed.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class DeviceManagementService {
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.problem.shaheed.dao.Device;
+
+
+@Service
+public class DeviceManagementService {
   private final static List<Device> devices = new ArrayList<>();
 
   static {
@@ -19,7 +25,7 @@ public class DeviceManagementService {
 
   public Optional<Device> getDevice(Long id) {
     return devices.stream()
-            .filter(device -> device.getId()
+            .filter(device -> device.getDeviceId()
                     .equals(id))
             .findFirst();
   }
